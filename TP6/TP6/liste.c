@@ -46,7 +46,6 @@ SingleLinkedListElem* GetElementAt(LinkedList* Liste, int i) {
 
 // Ajoute une nouvelle personne dans la liste chaînée en ième position
 // Cette fonction fait appel à la fonction NewLinkedListElement(Enregistrement pers) pour créer un maillon
-//
 
 int InsertElementAt(LinkedList* Liste, int i, Enregistrement pers) {
 	SingleLinkedListElem* CurrentElement, * NewElement;
@@ -75,27 +74,31 @@ int InsertElementAt(LinkedList* Liste, int i, Enregistrement pers) {
 		return(1);
 	}
 	else {
-		if (Liste->size == 0) { // insertion en tête de l'unique élément
+		if (Liste->size == 0) {				// Insertion en tête de l'unique élément!
 			NewElement = NewLinkedListElement(pers);
 			if (NewElement != NULL) {
-				//
+				/////
 				Liste->head = NewElement;
 				Liste->tail = NewElement;
 				Liste->size++;
-				//
+				Liste->head->next = NULL;
+				return (1);
+				/////
 			}
 			else {
 				return(0);
 			}
 		}
-		if (Liste->size <= i) { // insertion en queue
+		if (Liste->size <= i) {				// Insertion en queue!
 			NewElement = NewLinkedListElement(pers);
 			if (NewElement != NULL) {
-				//
+				/////
 				Liste->tail->next = NewElement;
 				Liste->tail = NewElement;
 				Liste->size += 1;
-				//
+				Liste->tail->next = NULL;
+				return (1);
+				/////
 			}
 			else {
 				return(0);
